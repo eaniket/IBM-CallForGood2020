@@ -1,0 +1,28 @@
+
+<a href="/logout"><button>Logout</button></a>
+
+<form action="/item/checkout" method="POST">
+<% let i=1 %>
+<% items.forEach(function(item){ %>
+    <div>
+        <h4> Item <%= i %>  </h4>
+        <ul>
+            <li><%= item.name %></li>
+            <li><%= item.category %></li>
+            <li><%= item.quantity %></li>
+            <li><%= item.price %></li>
+            <li><%= item.description %></li>
+            <% var url= "/item/update/" + item._id %>
+          
+            <li>Enter Quantity<input type="number" name=count[<%= item.name %>]  ></li>
+            <!-- <li></li> -->
+            <!-- <li><form action="/item/delete/<%= item._id %>?_method=DELETE" method ="POST"> <input type="Submit" value="Delete"></form></li> -->
+        </ul>
+    </div>
+      
+               
+<% i=i+1
+}); %>
+<input type="Submit" value="Proceed">
+<button><a href="/item/history"> History</a></button>
+</form>

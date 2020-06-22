@@ -1,0 +1,48 @@
+.main{
+    margin: auto;
+    text-align: center;
+}
+input{
+    margin-top: 10px !important;
+    border-radius: 4px;
+    padding: 5px 5px 5px 5px;
+    border: 1px grey solid;
+}
+
+nav{
+    color: white;
+    font-size: 1.8rem;
+}
+
+.container-fluid{
+    width: 70%;
+    margin-top: 10px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.col-sm{
+    margin: 10px 0px 10px 0px;
+}
+
+.card{
+    background-color: #204051;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+nav a{
+    color: white;
+}
+nav a:hover{
+    color: grey;
+}
+
+.scr{
+    height: 350px;
+    overflow: auto;
+}
+
+.scr .card{
+    background-color: #726a95;
+}

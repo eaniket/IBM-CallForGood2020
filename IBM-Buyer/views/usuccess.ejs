@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <base href="/">
+    <style>
+    .main {
+        margin: auto;
+        text-align: center;
+    }
+
+    input {
+        margin-top: 10px !important;
+        border-radius: 4px;
+        padding: 5px 5px 5px 5px;
+        border: 1px grey solid;
+    }
+
+    nav {
+        color: white;
+        font-size: 1.8rem;
+    }
+
+    .container-fluid {
+        width: 70%;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .col-sm {
+        margin: 10px 0px 10px 0px;
+    }
+
+    .card {
+        background-color: #204051;
+        color: white;
+        margin: auto;
+        text-align: center;
+    }
+
+    nav a {
+        color: white;
+    }
+
+    nav a:hover {
+        color: grey;
+    }
+
+    .scr {
+        height: 350px;
+        overflow: auto;
+    }
+
+    .scr .card {
+        background-color: #726a95;
+    }
+    .btn{
+        font-size: 1.5rem;
+    }
+</style>
+    <title>Upload Product</title>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="navbar navbar-dark bg-dark">
+            <a href=""><i class="fas fa-shopping-cart"></i></a>
+            <a href=""><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+        <h1>Success!</h1>
+        <div class="container-fluid">
+            <button class="btn btn-success">Process completed successfully</button><br><br>
+            <a href="/dashb/<%= sid %>" class="btn btn-warning"><i class="fas fa-home"></i> Go to Dashboard</a>
+        </div>
+    </div>
+</body>
+
+</html>

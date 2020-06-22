@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <div class="jumbotron" style="background-color:  #f7dc6f ;">
+    <h1 class="display-4">Hey, there!</h1>
+    <p class="lead">Here is your order list</p>
+    <hr class="my-4">
+  </div>
+  <%if (data.time_up.length === 0){%>
+  <h1 class="display-4">No requests that have timed out</h1>
+  <%}else{data.time_up.forEach(res=>{%>
+  <h6 class="display-4">List of requests that have timeout</h6>
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">Name:<%= res.name %></h5>
+      <p class="card-text">Category:<%=res.cat%></p>
+      <p class="card-text">Quantity : <%=res.quantity%> <%=res.units%></p>
+      <p class="card-text">Threshold Set : <%=res.threshold%></p>
+      <p class="card-text">Price : Rs<%=res.price%></p>
+      <p class="card-text">Quantity Requested : <%=res.quantity%></p>
+      <p class="card-text"> Time has run out and the product is still unsold. What what would you like to do?</p>
+      <form action="/delete" method="POST">
+        <input type="hidden" name="id" value=<%=res._id %>>
+        <button type="submit" class="m btn btn-danger">Delete it</button>
+      </form>
+      <form action="/update" method="POST">
+        <input type="hidden" name="id" value=<%=res._id %>>
+        <button type="submit" class="m btn btn-success">Sell it</button>
+      </form>
+    </div>
+  </div>
+  <% }) %>
+  <%}%>
+<hr class="my-4">
+<%if (data.active.length === 0){%>
+  <h1 class="display-4">No requests that have timed out</h1>
+  <%}else{data.active.forEach(res=>{%>
+  <h6 class="display-4">List of requests that have are still active</h6>
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">Name:<%= res.name %></h5>
+      <p class="card-text">Category:<%=res.cat%></p>
+      <p class="card-text">Quantity : <%=res.quantity%> <%=res.units%></p>
+      <p class="card-text">Threshold Set : <%=res.threshold%></p>
+      <p class="card-text">Price : Rs<%=res.price%></p>
+      <p class="card-text">Quantity Requested : <%=res.quantity%></p>
+      <p class="card-text"> TIme has not run out and still waiting for orders.</p>
+    </div>
+  </div>
+  <% }) %>
+  <%}%>
+<hr class="my-4">
+<%if (data.sold.length === 0){%>
+  <h1 class="display-4">No sold items</h1>
+  <%}else{data.sold.forEach(res=>{%>
+  <h6 class="display-4">List of requests that you have completed </h6>
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">Name:<%= res.name %></h5>
+      <p class="card-text">Category:<%=res.cat%></p>
+      <p class="card-text">Quantity : <%=res.quantity%> <%=res.units%></p>
+      <p class="card-text">Threshold Set : <%=res.threshold%></p>
+      <p class="card-text">Price : Rs<%=res.price%></p>
+      <p class="card-text">Quantity Requested : <%=res.quantity%></p>
+    </div>
+  </div>
+  <% }) %>
+  <%}%>
+<hr class="my-4">
+<%if (data.deleted.length === 0){%>
+  <h1 class="display-4">No deleted items</h1>
+  <%}else{data.deleted.forEach(res=>{%>
+  <h6 class="display-4">List of requests that you have delete</h1>
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Name:<%= res.name %></h5>
+        <p class="card-text">Category:<%=res.cat%></p>
+        <p class="card-text">Quantity : <%=res.quantity%> <%=res.units%></p>
+        <p class="card-text">Threshold Set : <%=res.threshold%></p>
+        <p class="card-text">Price : Rs<%=res.price%></p>
+        <p class="card-text">Quantity Requested : <%=res.quantity%></p>
+      </div>
+    </div>
+    <% }) %>
+    <%}%>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

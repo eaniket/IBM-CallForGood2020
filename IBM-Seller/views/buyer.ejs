@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .main {
+            margin: auto;
+            text-align: center;
+        }
+
+        input {
+            margin-top: 10px !important;
+            border-radius: 4px;
+            padding: 5px 5px 5px 5px;
+            border: 1px grey solid;
+        }
+
+        nav {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .container-fluid {
+            width: 70%;
+            margin-top: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .col-sm {
+            margin: 10px 0px 10px 0px;
+        }
+
+        .card {
+            background-color: #204051;
+            color: white;
+            margin: auto;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+        }
+
+        nav a:hover {
+            color: grey;
+        }
+
+        .scr {
+            height: 350px;
+            overflow: auto;
+        }
+
+        .scr .card {
+            background-color: #726a95;
+        }
+    </style>
+    <title>Buyer Dashboard</title>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="navbar navbar-dark bg-dark">
+            <a href=""><i class="fas fa-shopping-cart"></i></a>
+            <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+        <h3>Essentials</h3>
+        <% if(essen.length===0) {%>
+        <h4>No essential products available. Check Later.</h4>
+        <h3><i class="fas fa-frown"></i></h3>
+        <% } else {%>
+        <div class="container-fluid scr">
+        <% url= "/borders/"+bid +"/checkout" %>
+        <form action=<%= url %> method ="POST">
+            <% essen.forEach(res=>{%>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card" style="width: 60%;">
+                            <div class="card-body">
+                                <h4 class="card-title"><i class="fas fa-shopping-cart"></i> <%= res.name %></h4>
+                                <span>
+                                    <h5>Price : Rs <%= res.price %> per <%= res.unit %> Available : <%= res.quantity %> <%= res.unit %></h5>
+                                    <h6>Minimum Size : <%= res.min_size %> <%= res.unit %></h6>
+                                </span>
+                                <div>Enter Quantity: <input type="number" name=count[<%= res._id %>] >
+                                    <input type="submit" value="Place Order">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </form>
+            <%}%>
+        </div><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="width: 60%; background-color: #ff9a76;">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fas fa-search"></i> Explore</h4>
+                            <span><h5>Explore more available products</h5></span>
+                            <a href="/more/<%= bid %>" class="btn btn-secondary">Go</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card" style="width: 60%; background-color: #ff9a76;">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fas fa-history"></i> Previous Orders</h4>
+                            <span><h5>View current and completed transactions</h5></span>
+                            <a href="/borders/<%= bid %>" class="btn btn-secondary">Go</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

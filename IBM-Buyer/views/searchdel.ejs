@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <base href="/">
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+
+        .main {
+            margin: auto;
+            text-align: center;
+        }
+
+        input {
+            margin-top: 10px !important;
+            border-radius: 4px;
+            padding: 5px 5px 5px 5px;
+            border: 1px grey solid;
+        }
+
+        nav {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .container-fluid {
+            width: 70%;
+            margin-top: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .col-sm {
+            margin: 10px 0px 10px 0px;
+        }
+
+        .card {
+            background-color: #204051;
+            color: white;
+            margin: auto;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+        }
+
+        nav a:hover {
+            color: grey;
+        }
+
+
+        .scr .card {
+            background-color: #726a95;
+        }
+    </style>
+    <title>Order Product</title>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="navbar navbar-dark bg-dark">
+            <a href=""><i class="fas fa-shopping-cart"></i></a>
+            <a href=""><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+        <h3>Assigning agent for delivery</h3>
+        <div class="container-fluid">
+            <a href="/bdashb/<%= bid %>" class="btn btn-success">Go to Dashboard</a>
+            <h3>Assigned Agent</h3>
+            <h4><%= agid %></h4>
+            <h3>Distance from store</h3>
+            <h4><%= dist %> km</h4>
+            <h3>ETA</h3>
+            <h4><%= eta %> mins</h4>
+            <div id="map"></div><br>
+        </div>
+    </div>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            var store = { lat: <%= lat %>, lng: <%= lon %> };
+        var user = { lat: <%= ulat %>, lng: <%= ulon %> }
+        var map = new google.maps.Map(
+            document.getElementById('map'), { zoom: 8, center: store });
+        var flightPlanCoordinates = [
+            new google.maps.LatLng(<%= lat %>, <%= lon %>),
+            new google.maps.LatLng(<%= ulat %>, <%= ulon %>),
+        ];
+        var flightPath = new google.maps.Polyline({
+            path: flightPlanCoordinates,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+        flightPath.setMap(map);
+        var marker = new google.maps.Marker({ label: "STORE", position: store, map: map, icon: '/store.png' });
+        var marker2 = new google.maps.Marker({ label: "USER", position: user, map: map, icon: '/user.png' });
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsWTxWXBHq_rPc-UTn6GIKOBXO5uBKkHg&callback=initMap">
+        </script>
+</body>
+
+</html>

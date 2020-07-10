@@ -1,0 +1,28 @@
+<form action="/item/update/<%= item._id %>?_method=PUT" method="POST">
+    <div >
+        <input  type="text" name="item[name]" value="<%= item.name %>">
+    </div>
+    
+    <div >
+        <input type="text" name="item[description]" value="<%= item.description %>">
+    </div>
+    <div >
+        <input type="text" name="item[price]" value="<%= item.price %>">
+    </div>
+    <div >
+        Category:
+        <select name="item[category]" >
+            <option value="staple">Staples</option>
+            <option value="vegetable">Vegetables</option>
+            <option value="fruits">Fruits</option>
+            <option value="bath supply">Bath Supplies</option>
+        </select>
+    </div>
+    <div >
+        ImageURL<input  type="text" name="item[imageurl]" value="<%= item.image %>">
+    </div>
+    <div >
+        <button >Submit!</button>
+    </div>
+</form>
+<a href="/item">Go Back</a>

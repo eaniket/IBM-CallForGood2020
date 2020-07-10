@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .main {
+            margin: auto;
+            text-align: center;
+        }
+
+        input {
+            margin-top: 10px !important;
+            border-radius: 4px;
+            padding: 5px 5px 5px 5px;
+            border: 1px grey solid;
+        }
+
+        nav {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .container-fluid {
+            width: 70%;
+            margin-top: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .col-sm {
+            margin: 10px 0px 10px 0px;
+        }
+
+        .card {
+            background-color: #204051;
+            color: white;
+            margin: auto;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+        }
+
+        nav a:hover {
+            color: grey;
+        }
+
+        .scr .card {
+            background-color: #726a95;
+        }
+    </style>
+    <title>Seller current orders</title>
+</head>
+
+<body>
+    <div class="main">
+        <nav class="navbar navbar-dark bg-dark">
+            <a href=""><i class="fas fa-shopping-cart"></i></a>
+            <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+        </nav>
+        <h3>Current Orders Tab</h3>
+        <% if(data.length===0) {%>
+        <h4>No orders made yet</h4>
+        <h3><i class="fas fa-frown"></i></h3>
+        <% } else {%>
+        <div class="container-fluid scr">
+        <% data.forEach(res=>{%>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card" style="width: 60%;">
+                        <div class="card-body">
+                            <h4 class="card-title"><i class="fas fa-shopping-cart"></i> <%= res.name %></h4>
+                            <span>
+                                <h5>Price : Rs <%= res.price %> <br> Quantity : <%= res.quantity %> <%= res.unit %></h5>
+                                <h6>Buyer ID: <%= res.bid %> <br> Date : <%= res.date %></h6>
+                                <form action="/confirm/<%= sid %>/<%= res.bid %>" method="POST">
+                                    <input type="hidden" value="<%= res.quantity %>" name="qty">
+                                    <input type="hidden" value="<%= res.orderid%>" name="orderid">
+                                    <input type="hidden" value="<%= res._id%>" name="id">
+                                    <button class="btn btn-success">Confirm Order</button>
+                                </form>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+            <%}%>
+        </div><br>
+    </div>
+</body>
+
+</html>

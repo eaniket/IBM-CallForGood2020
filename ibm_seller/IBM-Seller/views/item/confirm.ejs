@@ -1,0 +1,15 @@
+<h1>Checkout</h1>
+<h3> Is this order correct? </h3>
+<h4> Quantity </h4>
+<ul>
+<% for (key in count) { %>
+   
+      <li><%= key %>: <%= count[key] %></li>
+            
+<% } %>
+
+</ul>
+
+<form action="/item" method="GET">
+<input type="submit" value="Confirm">
+</form>

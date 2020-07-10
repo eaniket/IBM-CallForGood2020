@@ -22,8 +22,8 @@ var middleware = require("./middleware");
 const { parse } = require('path');
 
 
-const accountSid = 'AC4fe07961b59c0e966638057688978979';
-const authToken = '30c47c26d06d312a5e74481c281f9552';
+const accountSid = '####';
+const authToken = '####';
 const client = require('twilio')(accountSid, authToken);
 const corsOptions = {
   origin: '*',

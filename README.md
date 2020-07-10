@@ -12,4 +12,4 @@ Steps to run seller application:
 2. Run npm install
 3. Run node server.js
 4. Go to localhost:3000
-Seller on ibmcloudfoundry: ibmseller-intelligent-eland-oc.eu-gb.mybluemix.net
+Seller on ibmcloudfoundry: https://ibmseller-intelligent-eland-oc.eu-gb.mybluemix.net

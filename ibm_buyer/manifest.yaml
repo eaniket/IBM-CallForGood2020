@@ -1,0 +1,7 @@
+---
+applications:
+- name: ibm_buyer
+  random-route: true
+  path: IBM-Buyer
+  command: node server.js
+  memory: 128M
